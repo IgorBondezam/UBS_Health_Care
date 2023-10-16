@@ -1,16 +1,17 @@
-package com.care.health.ubs.model;
+package com.care.health.ubs.model.domain;
 
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Document
 public class Receita {
     private Remedio remedio;
     private String prescricao;
