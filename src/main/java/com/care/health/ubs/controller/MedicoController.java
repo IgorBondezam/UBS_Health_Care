@@ -20,7 +20,7 @@ public class MedicoController {
         return service.findAll();
     }
 
-    @GetMapping(name = "/{id}")
+    @GetMapping(path = "/{id}")
     public Medico listarMedicoPorId(@PathVariable("id") String id) {
         return service.findById(id);
     }

@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface MedicoRepository extends MongoRepository<Medico, String> {
 
-    List<Pessoa> findByNomeAndContato_IdIsNotNull(String nome);
+    //List<Pessoa> findByNomeAndContato_IdIsNotNull(String nome);
 }

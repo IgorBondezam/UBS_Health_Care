@@ -13,7 +13,7 @@ import java.util.List;
 
 @Controller
 @Getter
-@RequestMapping(name = "/receitas")
+@RequestMapping(path = "/receitas")
 public class ReceitaController {
 
     @Autowired
@@ -21,7 +21,7 @@ public class ReceitaController {
 
     private List<Receita> receitas= new ArrayList<>();
 
-    @GetMapping(name = "paciente/{id}")
+    @GetMapping(path = "paciente/{id}")
     public List<Receita> listarConsultaPorPacienteId(@PathVariable("id") String id) {
         return service.getAllReceitasByPaciente(id);
     }

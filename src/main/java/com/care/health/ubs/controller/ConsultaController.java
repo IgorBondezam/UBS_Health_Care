@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping(name = "consulta")
+@RequestMapping(path = "consulta")
 public class ConsultaController {
 
     @Autowired
@@ -20,17 +20,17 @@ public class ConsultaController {
         return service.findAll();
     }
 
-    @GetMapping(name = "/{id}")
+    @GetMapping(path = "/{id}")
     public Consulta listarConsultaPorId(@PathVariable("id") String id) {
         return service.findById(id);
     }
 
-    @GetMapping(name = "medico/{id}")
+    @GetMapping(path = "medico/{id}")
     public List<Consulta> listarConsultaPorMedicoId(@PathVariable("id") String id) {
         return service.findByMedico(id);
     }
 
-    @GetMapping(name = "paciente/{id}")
+    @GetMapping(path = "paciente/{id}")
     public List<Consulta> listarConsultaPorPacienteId(@PathVariable("id") String id) {
         return service.findByPaciente(id);
     }
