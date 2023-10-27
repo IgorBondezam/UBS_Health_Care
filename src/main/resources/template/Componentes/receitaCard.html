@@ -1,0 +1,12 @@
+<div class="card col-10 col-md-5 col-xxl-3 m-4 text-center" th:fragment="receitaCard">
+    <div class="card-header fs-4">
+        <h2 class="card-title" style="color: var(--verde-4);" th:text="${cardTitle}"></h2>
+    </div>
+    <div class="card-body">
+        <p th:text="${cardBody}">
+        </p>
+    </div>
+    <div class="card-footer fs-5" style="background-color: var(--verde-4);">
+        <span class="font-monospace" style="color: var(--verde-5);" th:text="${cardFooter}"></span>
+    </div>
+</div>

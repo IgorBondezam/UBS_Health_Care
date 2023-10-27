@@ -23,7 +23,7 @@ i {
 
 a>span,
 a>i {
-    color: var(--Verde-5);
+    color: var(--verde-5);
 }
 
 a>span {
@@ -61,3 +61,4 @@ header {
     justify-content: space-around;
     align-items: center;
 }
+

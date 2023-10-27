@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ViewsController {
     @GetMapping(path = "/home")
     public String telaInicial(){
-        return "telaInicial";
+        return "Pages/Home/telaInicial";
+    }
+
+    @GetMapping()
+    public String telaTeste(){
+        return "teste";
     }
 }
