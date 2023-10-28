@@ -6,6 +6,7 @@ import com.care.health.ubs.model.service.ReceitaService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class ReceitaController {
 
     private List<Receita> receitas= new ArrayList<>();
 
+    @ModelAttribute("receitas")
     @GetMapping(path = "paciente/{id}")
     public List<Receita> listarConsultaPorPacienteId(@PathVariable("id") String id) {
         return service.getAllReceitasByPaciente(id);

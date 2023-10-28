@@ -5,14 +5,15 @@ import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class Medico {
+public class Login {
 
     @Id
     private String id;
 
-    private String teste;
-    private Pessoa pessoa;
+    private String login;
+    private String password;
 }

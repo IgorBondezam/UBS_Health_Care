@@ -23,5 +23,5 @@ public class Pessoa implements Serializable {
     @DateTimeFormat(pattern = "dd/MM/yyy")
     private LocalDate dataNascimento;
     private String genero;
-
+    private Login login;
 }

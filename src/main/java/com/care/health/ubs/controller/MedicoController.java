@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/pessoa")
 public class MedicoController {
 
@@ -25,8 +25,8 @@ public class MedicoController {
         return service.findById(id);
     }
 
-    @PostMapping
-    public void criarMedico(Medico medico) {
+    @PostMapping("/criar")
+    public void criarMedico(@RequestBody Medico medico) {
         service.criarMedico(medico);
     }
 }

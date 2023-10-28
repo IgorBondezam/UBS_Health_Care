@@ -1,7 +1,7 @@
 package com.care.health.ubs.model.domain;
 
 import jakarta.persistence.Id;
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -10,6 +10,8 @@ import java.util.List;
 
 @Document
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Consulta {
 
     @Id
