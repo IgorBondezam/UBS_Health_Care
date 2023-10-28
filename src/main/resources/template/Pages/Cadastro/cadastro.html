@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -15,14 +15,18 @@
     <h1 class="" style="color: #9EBF24;">Health Care</h1>
     <h2 class="m-3" style="letter-spacing: 5px; color: #365902;">Login</h2>
     <main class="form-signin col-10 col-md-6 col-lg-4 mx-auto">
-        <form>
+        <form method="POST" th:action="@{/cadastrar/pessoa}" th:object="${novoPaciente}">
             <div class="form-floating my-4">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="pessoa.login.login">
                 <label for="floatingInput">CPF</label>
             </div>
             <div class="form-floating my-4">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Senha</label>
+                <input type="text" class="form-control" name="pessoa.nome" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput" >Nome</label>
+            </div>
+            <div class="form-floating my-4">
+                <input type="password" class="form-control" name="pessoa.login.password" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword" >Senha</label>
             </div>
             <div class="form-floating my-4">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
