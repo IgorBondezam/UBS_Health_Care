@@ -12,13 +12,31 @@ public class ViewsController {
     @Autowired
     private MedicoService service;
 
-    @GetMapping(path = "/home")
+    @GetMapping(path = "/")
     public String telaInicial(Model model){
         model.addAttribute("medicos", service.findAll());
         return "Pages/Home/telaInicial";
     }
 
-    @GetMapping()
+    @GetMapping(path = "/login")
+    public String login(Model model){
+        model.addAttribute("medicos", service.findAll());
+        return "Pages/Login/login";
+    }
+
+    @GetMapping(path = "/cadastro")
+    public String cadastro(Model model){
+        model.addAttribute("medicos", service.findAll());
+        return "Pages/Cadastro/cadastro";
+    }
+
+    @GetMapping(path = "/calendario")
+    public String calendario(Model model){
+        model.addAttribute("medicos", service.findAll());
+        return "Pages/Calendario/calendario";
+    }
+
+    @GetMapping(path = "/teste")
     public String telaTeste(){
         return "teste";
     }
