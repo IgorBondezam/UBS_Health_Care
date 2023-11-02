@@ -23,40 +23,41 @@
     </style>
 </head>
 
-<body style="background-color: var(--verde-1);" >
+<body style="background-color: var(--verde-1);">
     <div id="MENU" th:replace="Componentes/menu.html :: menu"></div>
     <div class="ms-5">
         <h1 class="text-center" style="color: var(--verde-5);">Minhas Receitas</h1>
-        <div class="w-100 receitas d-flex justify-content-center flex-wrap"
-             style="background-color: var(--verde-1);">
-            <div th:replace="Componentes/receitaCard.html :: receitaCard"
+        <div class="w-100 receitas d-flex justify-content-center flex-wrap" style="background-color: var(--verde-1);">
+            <!-- <div th:replace="Componentes/receitaCard.html :: receitaCard"
                  th:with="cardTitle='CARDIZINNNN',
                           cardBody='AS AS JDO ASOD OASD OAJS DOAS DJOASDOASODJOSD SA ODJJASJODAO ASOD AOSJD OJA DJ ASOD AJODS AOJS DOJA DSJO ',
                           cardFooter='09/09/9999'"
-            ></div>
-    </div>
-
-
-    <tr data-th-each="medico : ${medicos} ">
-        <div class="card col-10 col-md-5 col-xxl-3 m-4 text-center">
-            <div class="card-header fs-4">
-                <h2 class="card-title" style="color: var(--verde-4);">Receitinha 1</h2>
-            </div>
-            <div class="card-body">
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error molestias iste illum provident.
-                    Similique voluptatum expedita quae inventore, ut quidem dignissimos ea aliquid deleniti aperiam at
-                    debitis, totam, facere asperiores.
-                    Possimus tempore magnam laborum quisquam nam minima placeat. Officiis a debitis quaerat eum ex quis
-                    blanditiis soluta? Libero, nihil. Ullam aliquam eius quas quos assumenda fugit earum, nam magnam
-                    distinctio!
-                </p>
-            </div>
-            <div class="card-footer fs-5" style="background-color: var(--verde-4);">
-                <span class="font-monospace" style="color: var(--verde-5);">19/09/2023</span>
-            </div>
+            ></div> -->
+            <tr data-th-each="medico : ${medicos} ">
+                <div class="card col-10 col-md-5 col-xxl-3 m-4 text-center">
+                    <div class="card-header fs-4">
+                        <h2 class="card-title" style="color: var(--verde-4);">Receitinha 1</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error molestias iste illum
+                            provident.
+                            Similique voluptatum expedita quae inventore, ut quidem dignissimos ea aliquid deleniti
+                            aperiam at
+                            debitis, totam, facere asperiores.
+                            Possimus tempore magnam laborum quisquam nam minima placeat. Officiis a debitis quaerat eum
+                            ex quis
+                            blanditiis soluta? Libero, nihil. Ullam aliquam eius quas quos assumenda fugit earum, nam
+                            magnam
+                            distinctio!
+                        </p>
+                    </div>
+                    <div class="card-footer fs-5" style="background-color: var(--verde-4);">
+                        <span class="font-monospace" style="color: var(--verde-5);">19/09/2023</span>
+                    </div>
+                </div>
+            </tr>
         </div>
-    </tr>
     </div>
 </body>
 
