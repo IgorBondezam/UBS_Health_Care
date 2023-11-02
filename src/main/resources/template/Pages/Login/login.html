@@ -12,12 +12,29 @@
 
 <body style="background-color: rgba(158, 191, 36, 0.25); height: 100vh;"
     class="d-flex flex-column justify-content-center py-4 text-center">
+<script>
+    function mascara(i){
+
+        var v = i.value;
+
+        if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+            i.value = v.substring(0, v.length-1);
+            return;
+        }
+
+        //i.setAttribute("maxlength", "14");
+        if (v.length == 3 || v.length == 7) i.value += ".";
+        if (v.length == 11) i.value += "-";
+
+    }
+</script>
     <h1 class="" style="color: #9EBF24;">Health Care</h1>
     <h2 class="m-3" style="letter-spacing: 5px; color: #365902;">Login</h2>
     <main class="form-signin col-10 col-md-6 col-lg-4 mx-auto">
         <form>
             <div class="form-floating my-4">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input type="text" maxlength="14" oninput="mascara(this)" class="form-control"
+                    id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">CPF</label>
             </div>
             <div class="form-floating my-4">
