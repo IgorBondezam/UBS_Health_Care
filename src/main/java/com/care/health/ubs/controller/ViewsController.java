@@ -42,6 +42,11 @@ public class ViewsController {
         return "Pages/Calendario/calendario";
     }
 
+    @GetMapping(path = "/prescricao")
+    public String prescricao(){
+        return "Pages/Prescricao/prescricao";
+    }
+
     @GetMapping(path = "/teste")
     public String telaTeste(){
         return "teste";
