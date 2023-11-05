@@ -33,27 +33,19 @@
                           cardBody='AS AS JDO ASOD OASD OAJS DOAS DJOASDOASODJOSD SA ODJJASJODAO ASOD AOSJD OJA DJ ASOD AJODS AOJS DOJA DSJO ',
                           cardFooter='09/09/9999'"
             ></div> -->
-            <tr data-th-each="medico : ${medicos} ">
+            <tr data-th-each="receita, index : ${receitas} ">
                 <div class="card col-10 col-md-5 col-xxl-3 m-4 text-center">
-                    <div class="card-header fs-4" ><h2 class="card-title" style="color: var(--verde-4);">Receitinha 1
+                    <div class="card-header fs-4" >
+                        <h2 class="card-title" style="color: var(--verde-4);" th:text="'Receita ' + ${index.count}">
                         </h2>
                     </div>
                     <div class="card-body">
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error molestias iste illum
-                            provident.
-                            Similique voluptatum expedita quae inventore, ut quidem dignissimos ea aliquid deleniti
-                            aperiam at
-                            debitis, totam, facere asperiores.
-                            Possimus tempore magnam laborum quisquam nam minima placeat. Officiis a debitis quaerat eum
-                            ex quis
-                            blanditiis soluta? Libero, nihil. Ullam aliquam eius quas quos assumenda fugit earum, nam
-                            magnam
-                            distinctio!
-                        </p>
+                        <p th:text="${receita.prescricao}"></p>
                     </div>
                     <div class="card-footer fs-5" style="background-color: var(--verde-4);">
-                        <span class="font-monospace" style="color: var(--verde-5);">19/09/2023</span>
+                        <span class="font-monospace" style="color: var(--verde-5);"
+                              th:text="${receita.dataInicio eq null ? '' : #temporals.format(receita.dataInicio, 'dd/MM/yyyy')}">
+                        </span>
                     </div>
                 </div>
             </tr>

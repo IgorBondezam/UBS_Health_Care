@@ -37,7 +37,7 @@ public class LoginService {
         }
         Paciente paciente = pacienteRepository.findPacienteByPessoa_Login_LoginAndPessoa_Login_Password(login.getLogin(),
                 login.getPassword());
-        if(Objects.nonNull(paciente.getId())) {
+        if(Objects.nonNull(paciente)) {
             UbsHealthCareApplication.loginTokens.add(paciente.getId());
             return true;
         }

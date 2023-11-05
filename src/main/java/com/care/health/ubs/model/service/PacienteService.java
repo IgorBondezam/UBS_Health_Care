@@ -25,5 +25,8 @@ public class PacienteService {
         repository.save(Paciente);
     }
 
+    public boolean isCpfJaCadastrado(String cpfCnpj){
+        return repository.existsPacienteByPessoa_CpfCnpjEquals(cpfCnpj);
+    }
 
 }

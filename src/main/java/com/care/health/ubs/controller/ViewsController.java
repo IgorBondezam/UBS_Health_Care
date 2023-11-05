@@ -2,6 +2,7 @@ package com.care.health.ubs.controller;
 
 import com.care.health.ubs.UbsHealthCareApplication;
 import com.care.health.ubs.model.service.MedicoService;
+import com.care.health.ubs.model.service.ReceitaService;
 import org.hibernate.id.GUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,31 +15,30 @@ import java.util.UUID;
 public class ViewsController {
 
     @Autowired
-    private MedicoService service;
+    private ReceitaService service;
 
-    @GetMapping(path = "/start")
+    @GetMapping(path = "/telaInicial")
     public String telaInicial(Model model){
-        model.addAttribute("medicos", service.findAll());
-//        UbsHealthCareApplication.loginTokens.add("teste");
+        if(UbsHealthCareApplication.loginTokens.isEmpty()){
+            return "redirect:/login";
+        }
+        model.addAttribute("receitas",
+                service.getAllReceitasByPaciente(UbsHealthCareApplication.loginTokens.get(0)));
         return "Pages/Home/telaInicial";
     }
 
     @GetMapping(path = "/login")
-    public String login(Model model){
-        model.addAttribute("medicos", service.findAll());
-
+    public String login(){
         return "Pages/Login/login";
     }
 
-    @GetMapping(path = "/cadastro")
-    public String cadastro(Model model){
-        model.addAttribute("medicos", service.findAll());
+    @GetMapping(path = "/paciente/cadastro")
+    public String cadastro(){
         return "Pages/Cadastro/cadastro";
     }
 
     @GetMapping(path = "/calendario")
-    public String calendario(Model model){
-        model.addAttribute("medicos", service.findAll());
+    public String calendario(){
         return "Pages/Calendario/calendario";
     }
 
@@ -47,6 +47,10 @@ public class ViewsController {
         return "Pages/Prescricao/prescricao";
     }
 
+    @GetMapping(path = "/receita")
+    public String receita(){
+        return "Pages/Receita/receita";
+    }
     @GetMapping(path = "/teste")
     public String telaTeste(){
         return "teste";

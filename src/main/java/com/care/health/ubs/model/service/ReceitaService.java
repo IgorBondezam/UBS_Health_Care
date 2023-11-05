@@ -17,7 +17,7 @@ public class ReceitaService {
 
     public List<Receita> getAllReceitasByPaciente(String id){
         List<Receita> receitas = new ArrayList<>();
-        repository.findByPaciente_Id(id).stream().map(c -> receitas.addAll(c.getReceitas()));
+        repository.findByPaciente_Id(id).forEach(c -> receitas.addAll(c.getReceitas()));
         return receitas;
     }
 }

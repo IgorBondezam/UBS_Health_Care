@@ -13,27 +13,49 @@
 <body style="background-color: rgba(158, 191, 36, 0.25); height: 100vh;"
     class="d-flex flex-column justify-content-center py-4 text-center">
     <h1 class="" style="color: #9EBF24;">Health Care</h1>
-    <h2 class="m-3" style="letter-spacing: 5px; color: #365902;">Login</h2>
+    <h2 class="m-3" style="letter-spacing: 5px; color: #365902;">Cadastro</h2>
     <main class="form-signin col-10 col-md-6 col-lg-4 mx-auto">
         <form method="POST" th:action="@{/cadastrar/pessoa}" th:object="${novoPaciente}">
             <div class="form-floating my-4">
-                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="pessoa.login.login">
+                <input type="text" class="form-control" id="floatingInput" placeholder="###.###.###-##" required
+                       name="pessoa.cpfCnpj">
                 <label for="floatingInput">CPF</label>
             </div>
             <div class="form-floating my-4">
-                <input type="text" class="form-control" name="pessoa.nome" id="floatingInput" placeholder="name@example.com">
+                <input type="text" class="form-control" name="pessoa.nome" id="floatingInput" required
+                       placeholder="nome">
                 <label for="floatingInput" >Nome</label>
             </div>
             <div class="form-floating my-4">
-                <input type="password" class="form-control" name="pessoa.login.password" id="floatingPassword" placeholder="Password">
+                <select name="pessoa.sexo" id="sexo" class="form-control">
+                    <option>Selecione o sexo</option>
+                    <option th:each="sexo : ${T(com.care.health.ubs.model.domain.enums.SexoEnum).values()}"
+                            th:value="${sexo}" th:text="${sexo.getDescricao()}"></option>
+                </select>
+                <label for="sexo" >Sexo</label>
+            </div>
+            <div class="form-floating my-4">
+                <input type="date" class="form-control" name="pessoa.dataNascimento" id="floatingInput" required
+                       placeholder="Data de Nascimento">
+                <label for="floatingInput" >Data de Nascimento</label>
+            </div>
+            <div class="form-floating my-4">
+                <input type="number" class="form-control" name="pessoa.contato.telefone" id="floatingInput" required
+                       placeholder="Telefone">
+                <label for="floatingInput" >Telefone</label>
+            </div>
+            <div class="form-floating my-4">
+                <input type="password" class="form-control" name="pessoa.login.password" id="floatingPassword" required
+                       placeholder="Password">
                 <label for="floatingPassword" >Senha</label>
             </div>
             <div class="form-floating my-4">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" class="form-control" id="floatingPassword" required
+                       placeholder="Password">
                 <label for="floatingPassword">Confirme a Senha</label>
             </div>
             <div class="my-4">
-                <a href="#" class="link-offset-2-hover link-success">Fazer Login</a>
+                <a href="/login" class="link-offset-2-hover link-success">Fazer Login</a>
             </div>
             <button class="btn btn-success w-100 py-2" type="submit">Cadastrar</button>
         </form>

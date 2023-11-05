@@ -1,7 +1,9 @@
 package com.care.health.ubs.controller;
 
+import com.care.health.ubs.UbsHealthCareApplication;
 import com.care.health.ubs.model.domain.Consulta;
 import com.care.health.ubs.model.service.ConsultaService;
+import com.care.health.ubs.model.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -9,11 +11,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping(path = "consulta")
+@RequestMapping(path = "/consulta")
 public class ConsultaController {
 
     @Autowired
     private ConsultaService service;
+
+    @Autowired
+    private PacienteService pacienteService;
 
     @GetMapping
     public List<Consulta> listarConsultas() {
@@ -36,7 +41,8 @@ public class ConsultaController {
     }
 
     @PostMapping
-    public void criarConsulta(Consulta Consulta) {
-        service.criarConsulta(Consulta);
+    public void criarConsulta(@RequestBody Consulta consulta) {
+        consulta.setPaciente(pacienteService.findById(UbsHealthCareApplication.loginTokens.get(0)));
+        service.criarConsulta(consulta);
     }
 }
