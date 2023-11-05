@@ -11,17 +11,38 @@
     <style>
         :root {
             --verde-1: #274001;
+            --verde-2: #365902;
+            --verde-3: #618C03;
             --verde-4: #9EBF24;
             --verde-5: #F2F2F2;
+        }
 
-            * {
-                box-sizing: border-box;
-            }
+        * {
+            box-sizing: border-box;
+        }
+
+        .show {
+            display: block;
+            backdrop-filter: blur(2px) brightness(30%);
+
         }
     </style>
 </head>
 
 <body style="background-color: var(--verde-1);">
+    <script>
+        function toggleModal() {
+            const modal = document.getElementById('ModalMedicamentos')
+            if (!modal.classList.contains('show')) {
+                modal.classList.add('show');
+                modal.style.display = 'block'
+            }
+            else {
+                modal.classList.remove('show');
+                modal.style.display = 'none'
+            }
+        }
+    </script>
     <div id="MENU" th:replace="Componentes/menu.html :: menu"></div>
     <div class="ms-5 ps-5 text-center" style="color: var(--verde-5);">
         <h1 class="m-3 fs-1">Prescrição</h1>
@@ -51,33 +72,80 @@
             <div class="col-12 m-4">
                 <h2 class="m-3 fs-4">Dados dos Remédios</h2>
                 <input type="button" value="Adicionar Remédio" class="btn mx-auto my-3 btn-lg"
-                    style="background-color: var(--verde-4); color: var(--verde-5);">
+                    style="background-color: var(--verde-4); color: var(--verde-5);" data-bs-toggle="modal"
+                    data-bs-target="#ModalMedicamentos" onclick="toggleModal()">
+
+
+                <div class="modal fade" id="ModalMedicamentos" tabindex="-1" aria-labelledby="ModalMedicamentos"
+                    aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content" style="background-color: var(--verde-2);">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Remédio a Receita</h1>
+                                <i class="fa-solid fa-xmark fs-3 ms-auto" style="color: red;"
+                                    onclick="toggleModal()"></i>
+                            </div>
+                            <div class="modal-body">
+                                <div class="my-2 mx-auto col-9">
+                                    <label class="form-label fs-5" for="remedio">Remédio</label>
+                                    <select class="form-select form-control" id="remedio">
+                                        <option selected>Nenhum item selecionado</option>
+                                        <option value="Bezetacil">Bezetacil</option>
+                                        <option value="Metiolate">Metiolate</option>
+                                        <option value="Minisulide">Minisulide</option>
+                                    </select>
+                                </div>
+
+                                <div class="my-2 mx-auto col-9">
+                                    <label class="form-label fs-5" for="remedio">Via de Uso</label>
+                                    <select class="form-select form-control" id="remedio">
+                                        <option selected>Nenhum item selecionado</option>
+                                        <option value="Intravenosa">Intravenosa</option>
+                                        <option value="Oral">Oral</option>
+                                        <option value="Parenteral">Parenteral</option>
+                                        <option value="sublingual ">Sublingual </option>
+                                    </select>
+                                </div>
+
+                                <div class="my-2 mx-auto col-9">
+                                    <label class="form-label fs-5" for="doasagem">Dosagem em miligramas</label>
+                                    <input type="number" min="0" class="form-control" id="doasagem">
+                                </div>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                    onclick="toggleModal()">Fechar</button>
+                                <button type="button" class="btn btn-success">Adicionar Remédio</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-11 mt-2 mx-auto">
-                <h3 class="fs-5">Medicamentos Prescrevidos</h3>
+                <h3 class="fs-5 mb-3">Medicamentos Prescrevidos</h3>
                 <div style="background-color: var(--verde-5);" class="rounded-2">
                     <ul class="list-group col-12 mx-auto p-2">
                         <li class="list-group-item my-2 text-start d-flex rounded-2"
-                            style="background-color: var(--verde-4); color: var(--verde-5);">
+                            style="background-color: var(--verde-3); color: var(--verde-5);">
                             <span class="col-7">Bezetacil</span>
                             <span class="col-3">200mg</span>
                             <i class="fa-solid fa-xmark fs-3 ms-auto" style="color: red;"></i>
                         </li>
 
                         <li class="list-group-item my-2 text-start d-flex rounded-2"
-                            style="background-color: var(--verde-4); color: var(--verde-5);">
+                            style="background-color: var(--verde-3); color: var(--verde-5);">
                             <span class="col-7">Bezetacil</span>
                             <span class="col-3">200mg</span>
                             <i class="fa-solid fa-xmark fs-3 ms-auto" style="color: red;"></i>
                         </li>
                         <li class="list-group-item my-2 text-start d-flex rounded-2"
-                            style="background-color: var(--verde-4); color: var(--verde-5);">
+                            style="background-color: var(--verde-3); color: var(--verde-5);">
                             <span class="col-7">Bezetacil</span>
                             <span class="col-3">200mg</span>
                             <i class="fa-solid fa-xmark fs-3 ms-auto" style="color: red;"></i>
                         </li>
                         <li class="list-group-item my-2 text-start d-flex rounded-2"
-                            style="background-color: var(--verde-4); color: var(--verde-5);">
+                            style="background-color: var(--verde-3); color: var(--verde-5);">
                             <span class="col-7">Bezetacil</span>
                             <span class="col-3">200mg</span>
                             <i class="fa-solid fa-xmark fs-3 ms-auto" style="color: red;"></i>
