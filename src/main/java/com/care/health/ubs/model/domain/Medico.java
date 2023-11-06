@@ -13,6 +13,7 @@ public class Medico {
     @Id
     private String id;
 
-    private String teste;
+    private String crm;
+    private String cid;
     private Pessoa pessoa;
 }

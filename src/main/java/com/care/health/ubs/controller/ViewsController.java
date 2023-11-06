@@ -39,16 +39,26 @@ public class ViewsController {
 
     @GetMapping(path = "/calendario")
     public String calendario(){
+        if(UbsHealthCareApplication.loginTokens.isEmpty()){
+            return "redirect:/login";
+        }
         return "Pages/Calendario/calendario";
     }
 
     @GetMapping(path = "/prescricao")
     public String prescricao(){
+        if(UbsHealthCareApplication.loginTokens.isEmpty()){
+            return "redirect:/login";
+        }
         return "Pages/Prescricao/prescricao";
     }
 
     @GetMapping(path = "/receita")
-    public String receita(){
+    public String receita(Model model){
+        if(UbsHealthCareApplication.loginTokens.isEmpty()){
+            return "redirect:/login";
+        }
+//        model.addAttribute("receita", )
         return "Pages/Receita/receita";
     }
     @GetMapping(path = "/teste")
