@@ -28,11 +28,6 @@
     <div class="ms-5 ps-5">
         <h1 class="text-center" style="color: var(--verde-5);">Minhas Receitas</h1>
         <div class="w-100 receitas d-flex justify-content-center flex-wrap" style="background-color: var(--verde-1);">
-            <!-- <div th:replace="Componentes/receitaCard.html :: receitaCard"
-                 th:with="cardTitle='CARDIZINNNN',
-                          cardBody='AS AS JDO ASOD OASD OAJS DOAS DJOASDOASODJOSD SA ODJJASJODAO ASOD AOSJD OJA DJ ASOD AJODS AOJS DOJA DSJO ',
-                          cardFooter='09/09/9999'"
-            ></div> -->
             <tr data-th-each="receita, index : ${receitas} ">
                 <div class="card col-10 col-md-5 col-xxl-3 m-4 text-center">
                     <div class="card-header fs-4" >

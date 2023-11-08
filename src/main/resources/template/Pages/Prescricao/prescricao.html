@@ -17,6 +17,10 @@
             --verde-5: #F2F2F2;
         }
 
+        #remedioList{
+            min-height: 10vh;
+        }
+
         * {
             box-sizing: border-box;
         }
@@ -25,6 +29,10 @@
             display: block;
             backdrop-filter: blur(2px) brightness(30%);
 
+        }
+
+        .close-btn:hover{
+            cursor: pointer;
         }
     </style>
 </head>
@@ -41,6 +49,57 @@
                 modal.classList.remove('show');
                 modal.style.display = 'none'
             }
+        }
+
+        function adicionarRemedio(){
+            const remedioList = document.getElementById("remedioList")
+
+            const remedio = document.getElementById("remedio")
+            const viaDeUso = document.getElementById("viaDeUso")
+            const dosagem = document.getElementById("doasagem")
+
+            if(remedio.value === "Nenhum item selecionado" || viaDeUso.value === "Nenhum item selecionado" || dosagem.value === "" || dosagem.value === 0){
+                useToasts("Existem campos não preenchidos")
+                return
+            }
+
+            const newItem = `
+                        <li class=\"list-group-item my-2 text-start d-flex rounded-2\"
+                            style=\"background-color: var(--verde-3); color: var(--verde-5);\">
+                            <span class=\"col-7\">${remedio.value}</span>
+                            <span class=\"col-3\">${dosagem.value}mg</span>
+                            <span style=\"display: none\">${viaDeUso.value}</span>
+                            <i class=\"fa-solid fa-xmark fs-3 ms-auto close-btn\" style=\"color: red;\"></i>
+                        </li>
+            `
+
+            remedioList.innerHTML += newItem;
+            remedio.value = ""
+            viaDeUso.value = ""
+            dosagem.value = ""
+            toggleModal()
+        }
+
+        function fecharToast(){
+            const toast = document.getElementById("toast")
+            toast.remove()
+        }
+
+        function useToasts(msg){
+            const toasts = `<div class="toast-container position-fixed bottom-0 end-0 p-3 z-1" id="toast">
+                              <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="toast-header">
+                                  <img src="..." class="rounded me-2" alt="...">
+                                  <strong class="me-auto">Erro</strong>
+                                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" onclick="fecharToast()"></button>
+                                </div>
+                                <div class="toast-body">
+                                  ${msg}
+                                </div>
+                              </div>
+                            </div>`
+
+            document.querySelector("body").appendChild(toasts)
         }
     </script>
     <div id="MENU" th:replace="Componentes/menu.html :: menu"></div>
@@ -98,7 +157,7 @@
 
                                 <div class="my-2 mx-auto col-9">
                                     <label class="form-label fs-5" for="remedio">Via de Uso</label>
-                                    <select class="form-select form-control" id="remedio">
+                                    <select class="form-select form-control" id="viaDeUso">
                                         <option selected>Nenhum item selecionado</option>
                                         <option value="Intravenosa">Intravenosa</option>
                                         <option value="Oral">Oral</option>
@@ -115,7 +174,7 @@
                             <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
                                     onclick="toggleModal()">Fechar</button>
-                                <button type="button" class="btn btn-success">Adicionar Remédio</button>
+                                <button type="button" class="btn btn-success" onclick="adicionarRemedio()">Adicionar Remédio</button>
                             </div>
                         </div>
                     </div>
@@ -124,32 +183,34 @@
             <div class="col-11 mt-2 mx-auto">
                 <h3 class="fs-5 mb-3">Medicamentos Prescrevidos</h3>
                 <div style="background-color: var(--verde-5);" class="rounded-2">
-                    <ul class="list-group col-12 mx-auto p-2">
-                        <li class="list-group-item my-2 text-start d-flex rounded-2"
-                            style="background-color: var(--verde-3); color: var(--verde-5);">
-                            <span class="col-7">Bezetacil</span>
-                            <span class="col-3">200mg</span>
-                            <i class="fa-solid fa-xmark fs-3 ms-auto" style="color: red;"></i>
-                        </li>
+                    <ul class="list-group col-12 mx-auto p-2" id="remedioList">
 
-                        <li class="list-group-item my-2 text-start d-flex rounded-2"
-                            style="background-color: var(--verde-3); color: var(--verde-5);">
-                            <span class="col-7">Bezetacil</span>
-                            <span class="col-3">200mg</span>
-                            <i class="fa-solid fa-xmark fs-3 ms-auto" style="color: red;"></i>
-                        </li>
-                        <li class="list-group-item my-2 text-start d-flex rounded-2"
-                            style="background-color: var(--verde-3); color: var(--verde-5);">
-                            <span class="col-7">Bezetacil</span>
-                            <span class="col-3">200mg</span>
-                            <i class="fa-solid fa-xmark fs-3 ms-auto" style="color: red;"></i>
-                        </li>
-                        <li class="list-group-item my-2 text-start d-flex rounded-2"
-                            style="background-color: var(--verde-3); color: var(--verde-5);">
-                            <span class="col-7">Bezetacil</span>
-                            <span class="col-3">200mg</span>
-                            <i class="fa-solid fa-xmark fs-3 ms-auto" style="color: red;"></i>
-                        </li>
+
+<!--                        <li class="list-group-item my-2 text-start d-flex rounded-2"-->
+<!--                            style="background-color: var(&#45;&#45;verde-3); color: var(&#45;&#45;verde-5);">-->
+<!--                            <span class="col-7">Bezetacil</span>-->
+<!--                            <span class="col-3">200mg</span>-->
+<!--                            <i class="fa-solid fa-xmark fs-3 ms-auto" style="color: red;"></i>-->
+<!--                        </li>-->
+
+<!--                        <li class="list-group-item my-2 text-start d-flex rounded-2"-->
+<!--                            style="background-color: var(&#45;&#45;verde-3); color: var(&#45;&#45;verde-5);">-->
+<!--                            <span class="col-7">Bezetacil</span>-->
+<!--                            <span class="col-3">200mg</span>-->
+<!--                            <i class="fa-solid fa-xmark fs-3 ms-auto" style="color: red;"></i>-->
+<!--                        </li>-->
+<!--                        <li class="list-group-item my-2 text-start d-flex rounded-2"-->
+<!--                            style="background-color: var(&#45;&#45;verde-3); color: var(&#45;&#45;verde-5);">-->
+<!--                            <span class="col-7">Bezetacil</span>-->
+<!--                            <span class="col-3">200mg</span>-->
+<!--                            <i class="fa-solid fa-xmark fs-3 ms-auto" style="color: red;"></i>-->
+<!--                        </li>-->
+<!--                        <li class="list-group-item my-2 text-start d-flex rounded-2"-->
+<!--                            style="background-color: var(&#45;&#45;verde-3); color: var(&#45;&#45;verde-5);">-->
+<!--                            <span class="col-7">Bezetacil</span>-->
+<!--                            <span class="col-3">200mg</span>-->
+<!--                            <i class="fa-solid fa-xmark fs-3 ms-auto" style="color: red;"></i>-->
+<!--                        </li>-->
                     </ul>
                 </div>
             </div>

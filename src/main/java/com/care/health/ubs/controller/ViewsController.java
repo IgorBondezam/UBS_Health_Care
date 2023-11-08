@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.UUID;
 
@@ -32,7 +33,7 @@ public class ViewsController {
         return "Pages/Login/login";
     }
 
-    @GetMapping(path = "/paciente/cadastro")
+    @GetMapping(path = "/cadastro")
     public String cadastro(){
         return "Pages/Cadastro/cadastro";
     }
@@ -47,9 +48,19 @@ public class ViewsController {
         return "Pages/Prescricao/prescricao";
     }
 
+    @GetMapping(path = "/receita/{id}")
+    public String receitaEspecifica(@PathVariable long id){
+        return "Pages/Receita/receita";
+    }
+
     @GetMapping(path = "/receita")
     public String receita(){
-        return "Pages/Receita/receita";
+        return "Pages/Home/telaInicial";
+    }
+
+    @GetMapping(path = "/configuracao")
+    public String configuracao(){
+        return "Pages/Configuracao/configuracao";
     }
     @GetMapping(path = "/teste")
     public String telaTeste(){
