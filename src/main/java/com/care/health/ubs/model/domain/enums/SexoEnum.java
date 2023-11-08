@@ -8,7 +8,8 @@ import lombok.Getter;
 public enum SexoEnum {
 
     MASCULINO("Masculino"),
-    FEMININO("Feminino");
+    FEMININO("Feminino"),
+    NAO_INFORMAR("Prefiro não informar");
 
     private final String descricao;
 }

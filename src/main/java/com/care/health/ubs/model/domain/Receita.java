@@ -1,9 +1,11 @@
 package com.care.health.ubs.model.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -14,6 +16,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Document
 public class Receita {
+
+    @Id
+    private String id = new ObjectId().toString();
+
     private Remedio remedio;
     private String prescricao;
     @DateTimeFormat(pattern = "dd/MM/yyyy")

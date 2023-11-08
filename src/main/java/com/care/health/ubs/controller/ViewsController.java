@@ -40,11 +40,17 @@ public class ViewsController {
 
     @GetMapping(path = "/calendario")
     public String calendario(){
+        if(UbsHealthCareApplication.loginTokens.isEmpty()){
+            return "redirect:/login";
+        }
         return "Pages/Calendario/calendario";
     }
 
     @GetMapping(path = "/prescricao")
     public String prescricao(){
+        if(UbsHealthCareApplication.loginTokens.isEmpty()){
+            return "redirect:/login";
+        }
         return "Pages/Prescricao/prescricao";
     }
 
@@ -53,14 +59,16 @@ public class ViewsController {
         return "Pages/Receita/receita";
     }
 
-    @GetMapping(path = "/receita")
-    public String receita(){
-        return "Pages/Home/telaInicial";
-    }
-
     @GetMapping(path = "/configuracao")
     public String configuracao(){
         return "Pages/Configuracao/configuracao";
+
+    public String receita(Model model){
+        if(UbsHealthCareApplication.loginTokens.isEmpty()){
+            return "redirect:/login";
+        }
+        return "Pages/Receita/receita";
+
     }
     @GetMapping(path = "/teste")
     public String telaTeste(){

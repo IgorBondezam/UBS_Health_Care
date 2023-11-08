@@ -28,7 +28,7 @@
             </div>
             <div class="form-floating my-4">
                 <select name="pessoa.sexo" id="sexo" class="form-control">
-                    <option>Selecione o sexo</option>
+                    <option>Selecione seu sexo</option>
                     <option th:each="sexo : ${T(com.care.health.ubs.model.domain.enums.SexoEnum).values()}"
                             th:value="${sexo}" th:text="${sexo.getDescricao()}"></option>
                 </select>
