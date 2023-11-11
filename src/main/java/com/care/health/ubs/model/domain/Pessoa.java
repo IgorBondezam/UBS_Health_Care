@@ -26,7 +26,6 @@ public class Pessoa implements Serializable {
     private String cpfCnpj;
     private Contato contato;
     private Login login = new Login();
-    private List<String> alergias;
     private LocalDate dataCadastro = LocalDate.now();
 
     public void setCpfCnpj(String cpfCnpj) {

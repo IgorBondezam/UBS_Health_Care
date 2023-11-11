@@ -33,5 +33,8 @@ public class ConsultaService {
         repository.save(Consulta);
     }
 
+    public void deletarConsulta(Consulta consulta){
+        repository.delete(consulta);
+    }
 
 }

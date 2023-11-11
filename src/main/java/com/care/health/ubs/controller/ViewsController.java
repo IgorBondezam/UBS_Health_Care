@@ -54,15 +54,12 @@ public class ViewsController {
         return "Pages/Prescricao/prescricao";
     }
 
-    @GetMapping(path = "/receita/{id}")
-    public String receitaEspecifica(@PathVariable long id){
-        return "Pages/Receita/receita";
+    @GetMapping(path = "/configuracao")
+    public String configuracao() {
+        return "Pages/Configuracao/configuracao";
     }
 
-    @GetMapping(path = "/configuracao")
-    public String configuracao(){
-        return "Pages/Configuracao/configuracao";
-
+    @GetMapping(path = "/receita/{id}")
     public String receita(Model model){
         if(UbsHealthCareApplication.loginTokens.isEmpty()){
             return "redirect:/login";

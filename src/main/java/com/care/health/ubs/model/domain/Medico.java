@@ -14,6 +14,5 @@ public class Medico {
     private String id;
 
     private String crm;
-    private String cid;
     private Pessoa pessoa;
 }

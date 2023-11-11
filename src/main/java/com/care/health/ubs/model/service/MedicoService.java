@@ -13,17 +13,15 @@ public class MedicoService {
 
     private final MedicoRepository repository;
 
-    public List<Medico> findAll(){
-        return repository.findAll();
-    }
-
-    public Medico findById(String  id){
-        return repository.findById(id).get();
-    }
-
     public void criarMedico(Medico medico){
         repository.save(medico);
     }
 
+    public void deletarMedico(Medico medico){
+        repository.delete(medico);
+    }
 
+    public Medico findMedicoByLogin(String login, String password) {
+        return repository.findMedicoByPessoa_Login_LoginAndPessoa_Login_Password(login, password);
+    }
 }

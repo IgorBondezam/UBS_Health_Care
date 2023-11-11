@@ -13,19 +13,19 @@ public class PacienteService {
 
     private final PacienteRepository repository;
 
-    public List<Paciente> findAll(){
+    public List<Paciente> findAll() {
         return repository.findAll();
     }
 
-    public Paciente findById(String  id){
+    public Paciente findById(String id) {
         return repository.findById(id).get();
     }
 
-    public void criarPaciente(Paciente Paciente){
+    public void criarPaciente(Paciente Paciente) {
         repository.save(Paciente);
     }
 
-    public boolean isCpfJaCadastrado(String cpfCnpj){
+    public boolean isCpfJaCadastrado(String cpfCnpj) {
         return repository.existsPacienteByPessoa_CpfCnpjEquals(cpfCnpj);
     }
 
