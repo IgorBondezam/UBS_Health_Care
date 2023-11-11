@@ -60,9 +60,11 @@ public class ViewsController {
     }
 
     @GetMapping(path = "/configuracao")
-    public String configuracao(){
+    public String configuracao() {
         return "Pages/Configuracao/configuracao";
+    }
 
+    @GetMapping(path = "/receita")
     public String receita(Model model){
         if(UbsHealthCareApplication.loginTokens.isEmpty()){
             return "redirect:/login";
